@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary,cloudinary.api,cloudinary.uploader
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,6 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-k+u5rz4vx&71n*_te+#b2vuaid0gqq3o2w5j&47z%m##d-fqxm'
+
+cloudinary( 
+    cloud_name = "dg5gebequ", 
+    api_key = "388514951533463", 
+    api_secret = "PQ-s6behlA021Cf7hpYZpjcyFxQ" 
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
