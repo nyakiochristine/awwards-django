@@ -1,3 +1,4 @@
+import email
 from gzip import READ
 from django.db import models
 from django.contrib.auth.models import User
@@ -13,7 +14,9 @@ class Profile(models.Model):
     profile_picture = models.CloudinaryField()
     bio= models.TextField(max_length=355,default='my bio',blank=True)
     name = models.CharField(max_length=65,blank=True)
+    email = models.EmailField(max_length=120,blank=True)
     location = models.CharField(max_length=65,blank=True)
+    
     
     
     
@@ -28,6 +31,17 @@ class Post(models.Model):
     photo = models.CloudinaryField()
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='posts')
     date = models.DateTimeField(auto_now_add=True, blank=True)
+    
+    
+    def create_user_profile(sender,instance,created,kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+            
+            
+            
+    def save_user_profile(sender,instance,**kwargs):
+        instance.profile.save()
+        
     
     
     def __str__(self):
