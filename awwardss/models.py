@@ -4,14 +4,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 import datetime as dt
-from cloudinary.models import CloudinaryField
+#from cloudinary.models import CloudinaryField
 # Create your models here.
 #profile,#post #rating
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
-    profile_picture = models.CloudinaryField()
+    profile_picture = models.ImageField()
     bio= models.TextField(max_length=355,default='my bio',blank=True)
     name = models.CharField(max_length=65,blank=True)
     email = models.EmailField(max_length=120,blank=True)
@@ -28,7 +28,7 @@ class Post(models.Model):
     url = models.URLField(max_length=200)
     description = models.TextField(max_length=500)
     technologies = models.CharField(max_length=100, blank=True)
-    photo = models.CloudinaryField()
+    photo = models.ImageField()
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='posts')
     date = models.DateTimeField(auto_now_add=True, blank=True)
     
