@@ -21,13 +21,12 @@ def index(request):
     try:
         posts = Post.objects.all()
         posts = posts[::-1]
-        a_post = random.randint(0, len(posts)-1)
-        random_post = posts[a_post]
-        print(random_post.photo)
+        #a_post = random.randint(0, len(posts)-1)
+        #random_post = posts[a_post]
+        #print(random_post.photo)
     except Post.DoesNotExist:
         posts = None
-    return render(request, 'index.html', {'posts': posts, 'form': form, 'random_post': random_post})
-
+    return render(request, 'index.html', {'posts': posts, 'form': form})
 
 
 def signup(request):
@@ -48,3 +47,13 @@ def signup(request):
 @login_required(login_url='login')
 def profile(request, username):
     return render(request, 'profile.html')
+
+
+def user_profile(request, username):
+    user_prof = get_object_or_404(User, username=username)
+    if request.user == user_prof:
+        return redirect('profile', username=request.user.username)
+    params = {
+        'user_prof': user_prof,
+    }
+    return render(request, 'userprofile.html', params)
