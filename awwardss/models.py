@@ -1,10 +1,10 @@
 import email
 from gzip import READ
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 import datetime as dt
-#from cloudinary.models import CloudinaryField
 # Create your models here.
 #profile,#post #rating
 
@@ -16,9 +16,19 @@ class Profile(models.Model):
     name = models.CharField(max_length=65,blank=True)
     email = models.EmailField(max_length=120,blank=True)
     location = models.CharField(max_length=65,blank=True)
+    contact = models.CharField(max_length=65,blank=True)
     
-    
-    
+    def __str__(self):
+            return f'{self.user.username} Profile'
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created):
+        if created:
+            Profile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance):
+        instance.profile.save()
     
     
     
@@ -33,7 +43,7 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True)
     
     
-    def create_user_profile(sender,instance,created,kwargs):
+    def create_user_profile(sender,instance,created,**kwargs):
         if created:
             Profile.objects.create(user=instance)
             
@@ -49,6 +59,17 @@ class Post(models.Model):
     
     def  delete_post(self):
         self.delete()
+    @classmethod
+    def search_project(cls, title):
+        return cls.objects.filter(title__icontains=title).all()
+
+    @classmethod
+    def all_posts(cls):
+        return cls.objects.all()
+
+    def save_post(self):
+        self.save()
+
         
         
 
