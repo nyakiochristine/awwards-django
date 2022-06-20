@@ -1,7 +1,6 @@
-{% extends base.html%}
+{% extends 'base.html'%}
 {% load static %}
-{% load bootstrap5 %}
-
+{% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
@@ -16,7 +15,7 @@
                     <div class="card-text">
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{form|crispy}}
+                            {{form}}
                             <button class="btn btn-info btn-sm">Register</button>
 
                         </form>
