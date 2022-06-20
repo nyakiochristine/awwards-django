@@ -1,9 +1,7 @@
 from django.contrib import admin
-from . import models
+from .models import *
 
-
-admin.register(models.Profile)
-admin.register(models.Post)
-admin.register(models.Rating)
-
-# Register your models here.
+# Register your models here
+admin.site.register(Post)
+admin.site.register(Profile)
+admin.site.register(Rating)
