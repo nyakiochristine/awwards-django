@@ -17,9 +17,11 @@ This project allows users to post their projects for other users to rate accordi
 * View projects overall score.
 * A user can view their profile page.  
   
-## Setup and Installation  
+## Setup and Installation 
 
-<img src="https://github.com/nyakiochristine/awards-django/blob/master/static/images/Screenshot_from_2022-06-20_11-17-08.png">
+![Screenshot from 2022-06-22 00-47-23](https://user-images.githubusercontent.com/98151711/174995945-23589cb0-97c4-4fc1-89bc-9a47b60decf3.png)
+)
+
 
 ### Cloning the repository
 
