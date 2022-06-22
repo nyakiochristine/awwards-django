@@ -65,7 +65,6 @@ def signup(request):
     return render(request,'registration/signup.html',{'form':form})
 
 
-@login_required(login_url='login')
 def profile(request, username):
     return render(request, 'profile.html')
 
@@ -85,14 +84,12 @@ def edit_profile(request, username):
     user = User.objects.get(username=username)
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
-        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user)
         if user_form.is_valid() and prof_form.is_valid():
-            user_form.save()
-            prof_form.save()
             return redirect('profile', user.username)
     else:
         user_form = UpdateUserForm(instance=request.user)
-        prof_form = UpdateUserProfileForm(instance=request.user.profile)
+        prof_form = UpdateUserProfileForm(instance=request.user)
     params = {
         'user_form': user_form,
         'prof_form': prof_form
