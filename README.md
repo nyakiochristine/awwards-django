@@ -19,7 +19,8 @@ This project allows users to post their projects for other users to rate accordi
   
 ## Setup and Installation 
 
-<img src:/home/moringa/awards-clone/static/images/Screenshot from 2022-06-22 00-47-23.png)
+![Screenshot from 2022-06-22 00-47-23](https://user-images.githubusercontent.com/98151711/174995945-23589cb0-97c4-4fc1-89bc-9a47b60decf3.png)
+)
 
 
 ### Cloning the repository
