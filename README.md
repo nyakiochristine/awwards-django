@@ -19,7 +19,7 @@ This project allows users to post their projects for other users to rate accordi
   
 ## Setup and Installation  
 
-To get the project .......
+<img src="https://github.com/nyakiochristine/awards-django/blob/master/static/images/Screenshot_from_2022-06-20_11-17-08.png">
 
 ### Cloning the repository
 
