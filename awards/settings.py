@@ -27,16 +27,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-k+u5rz4vx&71n*_te+#b2vuaid0gqq3o2w5j&47z%m##d-fqxm'
 
-#cloudinary( 
-    #cloud_name = "dg5gebequ", 
-    #api_key = "388514951533463", 
-    #api_secret = "PQ-s6behlA021Cf7hpYZpjcyFxQ" 
-#)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -66,6 +59,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
